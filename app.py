@@ -57,11 +57,11 @@ if st.button('Creditworthiness Level'):
     st.markdown(f"<p style='font-size:20px;'>Based on the feature values：<span style='color:{color};font-weight:bold;'>{level}</span></p>",
                 unsafe_allow_html=True)
 
-    with st.expander("点击查看数据处理细节"):
-        st.write("原始输入值：", input_data.values)
-        st.write("标准化后：", input_scaled)
-        st.write("归一化后：", input_processed)
+    with st.expander("Click to view data processing details"):
+        st.write("Original input values：", input_data.values)
+        st.write("After standardization：", input_scaled)
+        st.write("After normalization：", input_processed)
 
     # 显示原始输入值作为参考
-    st.markdown("**当前输入值:**")
+    st.markdown("**Current input values:**")
     st.dataframe(input_data.style.format("{:.1f}"))
