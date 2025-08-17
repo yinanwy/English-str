@@ -22,16 +22,16 @@ scaler = preprocessors['scaler']  # 4维标准化器
 normalizer = preprocessors['normalizer']  # 4维正则化器
 
 # 用户输入界面
-st.title('民办养老机构信用风险评估')
-st.markdown("请输入指标：")
+st.title('Credit Risk Assessment of Private Elderly-Care Institutions')
+st.markdown("Please enter the indicators：")
 
 # 输入字段
-CW02 = st.number_input("注册资本(万)")
-CP05 = st.number_input("融资历程(次数)")
-CP02 = st.number_input("专利数量 ")
-CS03 = st.number_input("纳税员工数 ")
+CW02 = st.number_input("Registered Capital (CW02)(unit: 10,000 CNY)")
+CP05 = st.number_input("Financing history (CP05)(unit: number of times)")
+CP02 = st.number_input("Financing History (CP05) (unit: times) ")
+CS03 = st.number_input("Number of Tax-Paying Employees (CS03) (unit: persons) ")
 
-if st.button('守信等级'):
+if st.button('Creditworthiness Level'):
     input_data = pd.DataFrame([[CW02, CP05, CP02,CS03]],
                               columns=['CW02', 'CP05', 'CP02', 'CS03'])
     input_scaled = scaler.transform(input_data)
@@ -39,22 +39,22 @@ if st.button('守信等级'):
 
     prob = model.predict_proba(input_processed)[0, 1]
     # 数值显示
-    # st.success(f"**守信等级：{prob:.4%}**")
+    # st.success(f"**Creditworthiness Level：{prob:.4%}**")
 
     # 根据概率值划分层次
     if prob < 0.94:
-        level = "低"
+        level = "Low"
         color = "red"
     elif prob < 0.995:
-        level = "中"
+        level = "Medium"
         color = "orange"
     else:
-        level = "高"
+        level = "High"
         color = "green"
 
     # 使用HTML标记和颜色显示结果
     # 只显示文字结果
-    st.markdown(f"<p style='font-size:20px;'>守信概率：<span style='color:{color};font-weight:bold;'>{level}</span></p>",
+    st.markdown(f"<p style='font-size:20px;'>Based on the feature values：<span style='color:{color};font-weight:bold;'>{level}</span></p>",
                 unsafe_allow_html=True)
 
     with st.expander("点击查看数据处理细节"):
