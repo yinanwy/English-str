@@ -45,10 +45,10 @@ if st.button('Creditworthiness Level'):
     if prob < 0.85:
         level = "Early Warning"
         color = "red"
-    elif prob < 0.99:
+    elif prob < 0.92:
         level = "Review Required"
         color = "orange"
-    elif prob < 0.999:
+    elif prob < 0.998:
         level = "Under Observation"
         color = "Yellow"
     else:
