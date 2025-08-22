@@ -27,8 +27,8 @@ st.markdown("Please enter the indicators：")
 
 # 输入字段
 CW02 = st.number_input("Registered Capital (CW02)(unit: 10,000 CNY)")
-CP05 = st.number_input("Financing history (CP05)(unit: number of times)")
-CP02 = st.number_input("Financing History (CP05) (unit: times) ")
+CP05 = st.number_input("Financing history (CP05)(unit: times)")
+CP02 = st.number_input("Financing History (CP02) (unit: times) ")
 CS03 = st.number_input("Number of Tax-Paying Employees (CS03) (unit: persons) ")
 
 if st.button('Creditworthiness Level'):
