@@ -43,16 +43,16 @@ if st.button('Creditworthiness Level'):
 
     # 根据概率值划分层次
     if prob < 0.85:
-        level = "Early Warning"
+        level = "Alert Level"
         color = "red"
     elif prob < 0.992:
-        level = "Review Required"
+        level = "Review Level"
         color = "orange"
     elif prob < 0.998:
-        level = "Under Observation"
+        level = "Watch Level"
         color = "Yellow"
     else:
-        level = "Prime Quality"
+        level = "Top Grade"
         color = "green"
 
     # 使用HTML标记和颜色显示结果
